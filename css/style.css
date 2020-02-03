@@ -16,6 +16,10 @@ h1, h3 {
   font-size: 2em;
 }
 
+a {
+  text-decoration: none;
+}
+
 .hero {
 	background-image: url("../img/book1.jpeg");
   background-size: cover;
@@ -39,6 +43,11 @@ h1, h3 {
 	display: inline-block;
 }
 
+.button:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .card-container {
 	max-width: 800px;
 	margin: 50px auto;
@@ -48,17 +57,22 @@ h1, h3 {
 }
 
 .card {
-	height: 300px;
+	min-height: 300px;
 	width: 230px;
 	border: 1px solid darkgray;
 	border-radius: 3px;
-	margin: 10px;
+  margin: 10px;
+  padding: .5rem;
 }
 
-a {
-  text-decoration: none;
+.card__content {
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.book__title {
+  width: 30%;
+}
 /*** Modal Section Styles ***/
 
 .bg-modal {
@@ -75,10 +89,8 @@ a {
 
 .modal-content {
   width: 500px;
-  height: 300px;
   background-color: white;
   border-radius: 4px;
-  text-align: center;
   padding: 20px;
   position: relative;
 }
