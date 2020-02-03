@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+$blue: #1686d9;
+
+section.hero div.hero-content h1, h3 {
+	color: white;
+	font-weight: 400;
+}
+
+/* header {
+	display: flex;
+	padding: 0 15px;
+	max-width: 800px;
+	margin: 0 auto;
+	justify-content: space-between;
+	align-items: center;
+	img {
+		width: 30px;
+	}
+} */
+
+.hero {
+	background-image: url("../img/book1.jpeg");
+  background-size: cover;
+  background-position: center;
+	height: 420px;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* filter: brightness(0.7); */
+}
+
+.button {
+	background-color: $blue;
+	border: 2px solid white;
+	border-radius: 30px;
+	text-decoration: none;
+	padding: 10px 28px;
+	color: white;
+	margin-top: 10px;
+	display: inline-block;
+	&:hover {
+		background-color: white;
+		color: $blue;
+		border: 2px solid $blue;
+	}
+}
+
+.card-container {
+	max-width: 800px;
+	margin: 50px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card {
+	height: 300px;
+	width: 230px;
+	border: 1px solid darkgray;
+	border-radius: 3px;
+	margin: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  padding: 0 3%;
+  background-color: black;
+}
+
+nav .brand {
+  color: #fff;
+}
+
+nav button {
+  padding: 0.65rem;
+  border-radius: 4px;
+  outline: none;
+  background-color: #D6BB59;
+  border: 1px solid rgba(0,0,0,0.21);
+}
+
+nav button:hover {
+  /* background-color: rgba(0, 0, 0, 0.2);sl */
+}
+
+/*** Modal Section Styles ***/
+
+.bg-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-content {
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  font-size: 42px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
