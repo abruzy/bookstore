@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap");
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 img {
   max-width: 100%;
 }
 
-h1, h3 {
+h1,
+h3 {
   color: white;
   font-size: 2em;
 }
@@ -21,26 +23,26 @@ a {
 }
 
 .hero {
-	background-image: url("../img/book1.jpeg");
+  background-image: url("../img/book1.jpeg");
   background-size: cover;
   background-position: center;
-	height: 420px;
-	width: 100%;
-	text-align: center;
-	display: flex;
-	justify-content: center;
+  height: 420px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .button {
-	border: 2px solid white;
-	border-radius: none;
-	text-decoration: none;
-	padding: 10px 28px;
-	color: white;
-	margin-top: 10px;
-	display: inline-block;
+  border: 2px solid white;
+  border-radius: none;
+  text-decoration: none;
+  padding: 10px 28px;
+  color: white;
+  margin-top: 10px;
+  display: inline-block;
 }
 
 .button:hover {
@@ -49,20 +51,20 @@ a {
 }
 
 .card-container {
-	max-width: 800px;
-	margin: 50px auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+  max-width: 800px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
-	min-height: 300px;
-	width: 230px;
-	border: 1px solid darkgray;
-	border-radius: 3px;
+  min-height: 300px;
+  width: 230px;
+  border: 1px solid darkgray;
+  border-radius: 3px;
   margin: 10px;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .card__content {
@@ -88,11 +90,19 @@ a {
 }
 
 .modal-content {
-  width: 500px;
+  width: 600px;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
   background-color: white;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 20px;
-  position: relative;
+  position: fixed;
+  overflow: hidden;
+}
+
+.modal-content .title {
+  color: #000;
 }
 
 .close {
@@ -102,4 +112,8 @@ a {
   font-size: 42px;
   transform: rotate(45deg);
   cursor: pointer;
+}
+
+.modal-content button {
+  width: 6rem;
 }
