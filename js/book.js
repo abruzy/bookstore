@@ -22,9 +22,37 @@ function deleteItem() {
 }
 
 function pushBook(book) {
-  myLibrary.push(book);
-  window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+  if (checkStorage) {
+    // add to the local storage array
+    // delete the current local storage array
+    // save the local storage array
+  getLocalStorage().push(book)
+  
+  }
+
+  myLibrary.push(book)
+  setLocalStorage(myLibrary)
   // re-render and update the page with the new set of data
+}
+
+function checkStorage() {
+  if (getLocalStorage == null) false
+
+  return true
+}
+
+function getLocalStorage() {
+  getMyLibray = window.localStorage.getItem('myLibrary');
+
+  return getMyLibray
+}
+
+function setLocalStorage(data) {
+   window.localStorage.setItem('myLibrary', JSON.stringify(data));
+}
+
+function deleteLocalStorage(){
+  
 }
 
 function addBookToLibrary() {
@@ -35,13 +63,12 @@ function addBookToLibrary() {
   const genreVal = document.getElementById('genre').value;
   const statusVal = document.getElementById('status').value;
 
-  if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') {
-    return alert("fields can't be blank!");
-  }
-
+  if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') alert("fields can't be blank!");
+  
+  document.querySelector('.bg-modal').style.display = 'none';
   const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
-  return pushBook(newBook);
+  pushBook(newBook);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,7 +76,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // eslint-disable-next-line no-console
-console.log(myLibrary);
-Book();
-addBookToLibrary();
-deleteItem();
