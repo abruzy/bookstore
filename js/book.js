@@ -1,4 +1,5 @@
 /* eslint-disable no-alert */
+'use strict';
 const myLibrary = [];
 
 function Book(title, page, author, year, genre, status) {
@@ -11,19 +12,20 @@ function Book(title, page, author, year, genre, status) {
   this.status = status;
 }
 
-function updatelocalStorage() {
-  window.localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-}
-
-function deleteItem() {
-  // splice and remove one item selected
-  updatelocalStorage(myLibrary);
+function deleteItem(book_id) {
+  if (checkStorage()) {
+    let ls = getLocalStorage();
+    ls.splice(book_id, 1)
+    setLocalStorage(ls)
+  } else {
+    alert('No data in the local stroage')
+  }
   // re-render and update the page with the new set of data
 }
 
 function pushBook(book) {
   if (checkStorage()) {
-    ls = JSON.parse(getLocalStorage())
+    let ls = getLocalStorage()
     ls.push(book)
     setLocalStorage(ls)
   } else {
@@ -41,7 +43,9 @@ function checkStorage() {
 }
 
 function getLocalStorage() {
-  return localStorage.getItem('myLibrary');
+  let ls = localStorage.getItem('myLibrary');
+
+  return JSON.parse(ls)
 }
 
 function setLocalStorage(data) {
@@ -69,15 +73,17 @@ function addBookToLibrary() {
 }
 
 function render() {
-  ls = getLocalStorage();
-  JSON.parse(ls).forEach(element => {
-     element
+  let ls = getLocalStorage();
+  ls.forEach(element => {
+    console.log(element)
   });
 }
-render();
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('add').addEventListener('click', addBookToLibrary);
-});
+function getABook(book_id) {
+let ls =  getLocalStorage();
+let book = ls[book_id]
+return book
+}
 
+// render()
 // eslint-disable-next-line no-console
