@@ -22,7 +22,7 @@ document.querySelector('.delete').addEventListener('click', function () {
 
 document.querySelector('.edit').addEventListener('click', function () {
   let book_id = this.getAttribute('data-id')
-  let query = document.querySelector('.general-botton')
+  let query = document.querySelector('.general-button')
   query.removeAttribute('id')
   query.setAttribute('id', 'edit')
   query.innerHTML = 'Update'
@@ -37,6 +37,10 @@ const populateEditForm = (book) => {
   document.getElementById('yearPublished').value = book.year;
   document.getElementById('genre').value = book.genre;
   document.getElementById('status').value = book.status;
-
   document.querySelector('.bg-modal').style.display = 'flex';
+
 }
+
+document.getElementById('edit').addEventListener('click', function () {
+  console.log('hi')
+})
