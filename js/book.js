@@ -22,37 +22,34 @@ function deleteItem() {
 }
 
 function pushBook(book) {
-  if (checkStorage) {
-    // add to the local storage array
-    // delete the current local storage array
-    // save the local storage array
-  getLocalStorage().push(book)
-  
+  if (checkStorage()) {
+    ls = JSON.parse(getLocalStorage())
+    ls.push(book)
+    setLocalStorage(ls)
+  } else {
+    myLibrary.push(book)
+    setLocalStorage(myLibrary)
   }
-
-  myLibrary.push(book)
-  setLocalStorage(myLibrary)
-  // re-render and update the page with the new set of data
 }
 
 function checkStorage() {
-  if (getLocalStorage == null) false
+  if (getLocalStorage() == null) {
+    return false
+  }
 
   return true
 }
 
 function getLocalStorage() {
-  getMyLibray = window.localStorage.getItem('myLibrary');
-
-  return getMyLibray
+  return localStorage.getItem('myLibrary');
 }
 
 function setLocalStorage(data) {
-   window.localStorage.setItem('myLibrary', JSON.stringify(data));
+  localStorage.setItem('myLibrary', JSON.stringify(data));
 }
 
-function deleteLocalStorage(){
-  
+function deleteLocalStorage() {
+  localStorage.removeItem('myLibrary')
 }
 
 function addBookToLibrary() {
@@ -64,12 +61,20 @@ function addBookToLibrary() {
   const statusVal = document.getElementById('status').value;
 
   if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') alert("fields can't be blank!");
-  
+
   document.querySelector('.bg-modal').style.display = 'none';
   const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
   pushBook(newBook);
 }
+
+function render() {
+  ls = getLocalStorage();
+  JSON.parse(ls).forEach(element => {
+     element
+  });
+}
+render();
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('add').addEventListener('click', addBookToLibrary);
