@@ -22,12 +22,21 @@ document.querySelector('.delete').addEventListener('click', function () {
 
 document.querySelector('.edit').addEventListener('click', function () {
   let book_id = this.getAttribute('data-id')
-  document.querySelector('.general-botton').removeAttribute('id')
-  let setId = document.querySelector('.general-botton').setAttribute('id', 'edit')
+  let query = document.querySelector('.general-botton')
+  query.removeAttribute('id')
+  query.setAttribute('id', 'edit')
+  query.innerHTML = 'Update'
   let book = getABook(book_id)
   populateEditForm(book)
 })
 
 const populateEditForm = (book) => {
-  
+  document.getElementById('title').value = book.title;
+  document.getElementById('pageNumber').value = book.page;
+  document.getElementById('authorName').value = book.author;
+  document.getElementById('yearPublished').value = book.year;
+  document.getElementById('genre').value = book.genre;
+  document.getElementById('status').value = book.status;
+
+  document.querySelector('.bg-modal').style.display = 'flex';
 }

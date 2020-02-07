@@ -23,7 +23,7 @@ function deleteItem(book_id) {
   // re-render and update the page with the new set of data
 }
 
-function pushBook(book) {
+function saveBook(book) {
   if (checkStorage()) {
     let ls = getLocalStorage()
     ls.push(book)
@@ -69,7 +69,7 @@ function addBookToLibrary() {
   document.querySelector('.bg-modal').style.display = 'none';
   const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
-  pushBook(newBook);
+  saveBook(newBook);
 }
 
 function render() {
