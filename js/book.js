@@ -82,18 +82,33 @@ function deleteLocalStorage() {
   localStorage.removeItem('myLibrary')
 }
 
-function render() {
-  let ls = getLocalStorage();
-  ls.forEach(element => {
-    console.log(element)
-  });
-}
-
 function getABook(book_id) {
   let ls = getLocalStorage();
   let book = ls[book_id]
   return book
 }
 
- render()
+function render() {
+  let ls = getLocalStorage();
+  ls.forEach((element, index) => {
+    let tr = document.createElement("TR")
+    tr.setAttribute('class', 'book-' + index)
+    console.log(tr)
+    tr.innerHTML =
+   `  
+        <td data-column="title">${element.title}</td>
+        <td data-column="pageNumber">${element.page}</td>
+        <td data-column="authorName">${element.author}</td>
+        <td data-column="yearPublished">${element.year}</td>
+        <td data-column="genre">${element.genre}</td>
+        <td data-column="status">${element.status}</td>
+        <td data-column="edit"><a data-id=${index} class="btn btn-primary edit">Edit</a></td>
+        <td data-column="delete"><a data-id="${index}" class="btn btn-danger delete">Delete</a></td>
+   `
+   document.querySelector('tbody').appendChild(tr)
+    // refresh window
+  });
+}
+
+render()
 // eslint-disable-next-line no-console

@@ -14,11 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('add').addEventListener('click', addBookToLibrary);
 });
 
-document.querySelector('.delete').addEventListener('click', function () {
-  let book_id = this.getAttribute('data-id')
-  document.querySelector('.book-' + book_id).style.display = 'none'
-  deleteItem(book_id)
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('.delete').addEventListener('click', function () {
+    let book_id = this.getAttribute('data-id')
+    document.querySelector('.book-' + book_id).style.display = 'none'
+    deleteItem(book_id)
+  })
 })
+
+
 
 document.querySelector('.edit').addEventListener('click', function () {
   let book_id = this.getAttribute('data-id')
@@ -41,6 +45,3 @@ const populateEditForm = (book) => {
 
 }
 
-document.getElementById('edit').addEventListener('click', function () {
-  console.log('hi')
-})
