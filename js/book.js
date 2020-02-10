@@ -37,6 +37,8 @@ function saveBook(book) {
     myLibrary.push(book)
     setLocalStorage(myLibrary)
   }
+
+  refreshPage()
 }
 
 function updateBook() {
@@ -51,7 +53,8 @@ function deleteItem(book_id) {
   } else {
     alert('No data in the local stroage')
   }
-  // re-render and update the page with the new set of data
+  
+  refreshPage()
 }
 
 function validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal) {
@@ -93,7 +96,6 @@ function render() {
   ls.forEach((element, index) => {
     let tr = document.createElement("TR")
     tr.setAttribute('class', 'book-' + index)
-    console.log(tr)
     tr.innerHTML =
    `  
         <td data-column="title">${element.title}</td>
@@ -102,13 +104,17 @@ function render() {
         <td data-column="yearPublished">${element.year}</td>
         <td data-column="genre">${element.genre}</td>
         <td data-column="status">${element.status}</td>
-        <td data-column="edit"><a data-id=${index} class="btn btn-primary edit">Edit</a></td>
-        <td data-column="delete"><a data-id="${index}" class="btn btn-danger delete">Delete</a></td>
+        <td data-column="edit"><a data-id=${index} class="btn btn-primary edit-${index}">Edit</a></td>
+        <td data-column="delete"><a data-id="${index}" class="btn btn-danger delete-${index}">Delete</a></td>
    `
    document.querySelector('tbody').appendChild(tr)
-    // refresh window
+    deleteBook(index)
+    editBook(index)
   });
 }
 
+function refreshPage(){
+  location.reload()
+}
 render()
 // eslint-disable-next-line no-console

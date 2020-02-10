@@ -14,25 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('add').addEventListener('click', addBookToLibrary);
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('.delete').addEventListener('click', function () {
+function deleteBook(index) {
+  document.querySelector('.delete-' + index).addEventListener('click', function () {
     let book_id = this.getAttribute('data-id')
     document.querySelector('.book-' + book_id).style.display = 'none'
     deleteItem(book_id)
   })
-})
+}
 
+function editBook(index){
+  document.querySelector('.edit-' + index).addEventListener('click', function () {
+    let book_id = this.getAttribute('data-id')
+    let query = document.querySelector('.general-button')
+    query.removeAttribute('id')
+    query.setAttribute('id', 'edit')
+    query.innerHTML = 'Update'
+    let book = getABook(book_id)
+    populateEditForm(book)
 
-
-document.querySelector('.edit').addEventListener('click', function () {
-  let book_id = this.getAttribute('data-id')
-  let query = document.querySelector('.general-button')
-  query.removeAttribute('id')
-  query.setAttribute('id', 'edit')
-  query.innerHTML = 'Update'
-  let book = getABook(book_id)
-  populateEditForm(book)
-})
+  })
+}
 
 const populateEditForm = (book) => {
   document.getElementById('title').value = book.title;
