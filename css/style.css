@@ -50,30 +50,7 @@ a {
   color: white;
 }
 
-/* .card-container {
-  max-width: 800px;
-  margin: 50px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  min-height: 300px;
-  width: 230px;
-  border: 1px solid darkgray;
-  border-radius: 3px;
-  margin: 10px;
-  padding: 0.5rem;
-}
-
-.card__content {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
 .book__title {
-  /* width: 30%; */
   color: #000;
   font-size: .2rem;
   font-weight: 500;
@@ -107,6 +84,7 @@ a {
   padding: 20px;
   position: fixed;
   overflow: hidden;
+  z-index: 10;
 }
 
 .modal-content .title {
