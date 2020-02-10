@@ -1,4 +1,3 @@
-'use strict';
 
 document.getElementById('button').addEventListener('click',
   () => {
@@ -15,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function deleteBook(index) {
-  document.querySelector('.delete-' + index).addEventListener('click', function () {
-    const bookId = this.getAttribute('data-id')
-    document.querySelector('.book-' + bookId).style.display = 'none'
+  document.querySelector(`.delete-${index}`).addEventListener('click', function () {
+    const bookId = this.getAttribute('data-id');
+    document.querySelector(`.book-${bookId}`).style.display = 'none';
     deleteItem(bookId);
-  })
+  });
 }
 
 const populateEditForm = (book) => {
@@ -32,8 +31,8 @@ const populateEditForm = (book) => {
   document.querySelector('.bg-modal').style.display = 'flex';
 };
 
-function editBook(index){
-  document.querySelector('.edit-' + index).addEventListener('click', function () {
+function editBook(index) {
+  document.querySelector(`.edit-${index}`).addEventListener('click', function () {
     const bookId = this.getAttribute('data-id');
     const query = document.querySelector('.general-button');
     query.removeEventListener('click', addBookToLibrary);
@@ -47,6 +46,4 @@ function editBook(index){
       updateBook(index);
     });
   });
-};
-
-
+}
