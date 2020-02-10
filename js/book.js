@@ -12,13 +12,19 @@ function Book(title, page, author, year, genre, status) {
   this.status = status;
 }
 
-function addBookToLibrary() {
+function getInputValue() {
   const titleVal = document.getElementById('title').value;
   const pageVal = document.getElementById('pageNumber').value;
   const authorVal = document.getElementById('authorName').value;
   const yearVal = document.getElementById('yearPublished').value;
   const genreVal = document.getElementById('genre').value;
   const statusVal = document.getElementById('status').value;
+
+  return [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal];
+}
+
+function addBookToLibrary() {
+  let [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue();
 
   validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal)
 
@@ -41,8 +47,25 @@ function saveBook(book) {
   refreshPage()
 }
 
-function updateBook() {
-  console.log('hi')
+function updateBook(book_id) {
+  let [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue()
+  validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal)
+  // get localStorage
+  let ls = getLocalStorage()
+  // get index from localStorage
+  let book = ls[book_id]
+  // update the book
+  book.title = titleVal
+  book.author = authorVal
+  book.page = pageVal
+  book.year = yearVal
+  book.genre = genreVal
+  book.status = statusVal
+  ls[book_id] = book
+  // save the book
+  setLocalStorage(ls)
+  // refresh the page
+  refreshPage()
 }
 
 function deleteItem(book_id) {

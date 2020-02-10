@@ -26,11 +26,17 @@ function editBook(index){
   document.querySelector('.edit-' + index).addEventListener('click', function () {
     let book_id = this.getAttribute('data-id')
     let query = document.querySelector('.general-button')
+    query.removeEventListener('click', addBookToLibrary)
     query.removeAttribute('id')
     query.setAttribute('id', 'edit')
     query.innerHTML = 'Update'
     let book = getABook(book_id)
     populateEditForm(book)
+
+    document.getElementById('edit').addEventListener('click', function() {
+      console.log(index)
+      updateBook(index)
+    })
 
   })
 }
