@@ -36,9 +36,9 @@ function addBookToLibrary() {
 
 function saveBook(book) {
   if (checkStorage()) {
-    let ls = getLocalStorage()
-    ls.push(book)
-    setLocalStorage(ls)
+    let ls = getLocalStorage();
+    ls.push(book);
+    setLocalStorage(ls);
   } else {
     myLibrary.push(book)
     setLocalStorage(myLibrary)
@@ -50,11 +50,9 @@ function saveBook(book) {
 function updateBook(book_id) {
   let [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue()
   validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal)
-  // get localStorage
+
   let ls = getLocalStorage()
-  // get index from localStorage
   let book = ls[book_id]
-  // update the book
   book.title = titleVal
   book.author = authorVal
   book.page = pageVal
@@ -62,9 +60,7 @@ function updateBook(book_id) {
   book.genre = genreVal
   book.status = statusVal
   ls[book_id] = book
-  // save the book
   setLocalStorage(ls)
-  // refresh the page
   refreshPage()
 }
 
@@ -137,7 +133,7 @@ function render() {
 }
 
 function refreshPage(){
-  location.reload()
+  location.reload();
 }
 render()
 // eslint-disable-next-line no-console

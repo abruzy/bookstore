@@ -51,4 +51,3 @@ const populateEditForm = (book) => {
   document.querySelector('.bg-modal').style.display = 'flex';
 
 }
-
