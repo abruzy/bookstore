@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function deleteBook(index) {
-  document.querySelector(`.delete-${index}`).addEventListener('click', function () {
+  document.querySelector(`.delete-${index}`).addEventListener('click', function deleteButton() {
     const bookId = this.getAttribute('data-id');
     document.querySelector(`.book-${bookId}`).style.display = 'none';
     deleteItem(bookId);
@@ -32,7 +32,7 @@ const populateEditForm = (book) => {
 };
 
 function editBook(index) {
-  document.querySelector(`.edit-${index}`).addEventListener('click', function () {
+  document.querySelector(`.edit-${index}`).addEventListener('click', function editButton() {
     const bookId = this.getAttribute('data-id');
     const query = document.querySelector('.general-button');
     query.removeEventListener('click', addBookToLibrary);

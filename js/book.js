@@ -45,7 +45,7 @@ function setLocalStorage(data) {
 }
 
 function refreshPage() {
-  location.reload();
+  window.location.reload();
 }
 
 function saveBook(book) {
