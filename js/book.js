@@ -23,7 +23,11 @@ function getInputValue() {
 }
 
 function validate(titleVal, pageVal, authorVal, yearVal) {
-  if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') alert("fields can't be blank!");
+  if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') {
+    return false
+  };
+
+  return true
 }
 
 function getLocalStorage() {
@@ -64,29 +68,38 @@ function saveBook(book) {
 function addBookToLibrary() {
   const [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue();
 
-  validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+  let validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+  if (validateInput) {
+    document.querySelector('.bg-modal').style.display = 'none';
+    const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
-  document.querySelector('.bg-modal').style.display = 'none';
-  const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+    saveBook(newBook);
+  } else {
+    displayErrorMessage()
+  }
 
-  saveBook(newBook);
 }
 
 function updateBook(bookId) {
   const [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue();
-  validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+  let validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
-  const ls = getLocalStorage();
-  const book = ls[bookId];
-  book.title = titleVal;
-  book.author = authorVal;
-  book.page = pageVal;
-  book.year = yearVal;
-  book.genre = genreVal;
-  book.status = statusVal;
-  ls[bookId] = book;
-  setLocalStorage(ls);
-  refreshPage();
+  if (validateInput) {
+    const ls = getLocalStorage();
+    const book = ls[bookId];
+    book.title = titleVal;
+    book.author = authorVal;
+    book.page = pageVal;
+    book.year = yearVal;
+    book.genre = genreVal;
+    book.status = statusVal;
+    ls[bookId] = book;
+    setLocalStorage(ls);
+    refreshPage();
+  } else {
+    displayErrorMessage()
+  }
+
 }
 
 function deleteItem(bookId) {
@@ -94,8 +107,6 @@ function deleteItem(bookId) {
     const ls = getLocalStorage();
     ls.splice(bookId, 1);
     setLocalStorage(ls);
-  } else {
-    alert('No data in the local stroage');
   }
 
   refreshPage();
@@ -113,6 +124,10 @@ function deleteBook(index) {
     document.querySelector(`.book-${bookId}`).style.display = 'none';
     deleteItem(bookId);
   });
+}
+
+function displayErrorMessage() {
+  document.querySelector('.error-message').innerHTML = 'input fields should not the empty'
 }
 
 document.addEventListener('DOMContentLoaded', () => {

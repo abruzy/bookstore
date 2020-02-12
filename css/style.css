@@ -133,6 +133,11 @@ th {
   width: auto;
 }
 
+.error-message {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
 /* 
 Max width before this PARTICULAR table gets nasty
 This query will take effect for any screen smaller than 760px
