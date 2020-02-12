@@ -101,35 +101,10 @@ function deleteItem(bookId) {
   refreshPage();
 }
 
-function deleteLocalStorage() {
-  localStorage.removeItem('myLibrary');
-}
-
 function getABook(bookId) {
   const ls = getLocalStorage();
   const book = ls[bookId];
   return book;
-}
-
-function render() {
-  const ls = getLocalStorage();
-  ls.forEach((element, index) => {
-    const tr = document.createElement('TR');
-    tr.setAttribute('class', `book-${index}`);
-    tr.innerHTML = `  
-        <td data-column="title">${element.title}</td>
-        <td data-column="pageNumber">${element.page}</td>
-        <td data-column="authorName">${element.author}</td>
-        <td data-column="yearPublished">${element.year}</td>
-        <td data-column="genre">${element.genre}</td>
-        <td data-column="status">${element.status}</td>
-        <td data-column="edit"><a data-id=${index} class="btn btn-primary edit-${index}">Edit</a></td>
-        <td data-column="delete"><a data-id="${index}" class="btn btn-danger delete-${index}">Delete</a></td>
-   `;
-    document.querySelector('tbody').appendChild(tr);
-    deleteBook(index);
-    editBook(index);
-  });
 }
 
 function deleteBook(index) {
@@ -139,6 +114,10 @@ function deleteBook(index) {
     deleteItem(bookId);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('add').addEventListener('click', addBookToLibrary);
+});
 
 const populateEditForm = (book) => {
   document.getElementById('title').value = book.title;
@@ -167,4 +146,24 @@ function editBook(index) {
   });
 }
 
+function render() {
+  const ls = getLocalStorage();
+  ls.forEach((element, index) => {
+    const tr = document.createElement('TR');
+    tr.setAttribute('class', `book-${index}`);
+    tr.innerHTML = `  
+        <td data-column="title">${element.title}</td>
+        <td data-column="pageNumber">${element.page}</td>
+        <td data-column="authorName">${element.author}</td>
+        <td data-column="yearPublished">${element.year}</td>
+        <td data-column="genre">${element.genre}</td>
+        <td data-column="status">${element.status}</td>
+        <td data-column="edit"><a data-id=${index} class="btn btn-primary edit-${index}">Edit</a></td>
+        <td data-column="delete"><a data-id="${index}" class="btn btn-danger delete-${index}">Delete</a></td>
+   `;
+    document.querySelector('tbody').appendChild(tr);
+    deleteBook(index);
+    editBook(index);
+  });
+}
 render();
