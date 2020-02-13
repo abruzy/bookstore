@@ -24,10 +24,10 @@ function getInputValue() {
 
 function validate(titleVal, pageVal, authorVal, yearVal) {
   if (titleVal === '' || pageVal === '' || authorVal === '' || yearVal === '') {
-    return false
-  };
+    return false;
+  }
 
-  return true
+  return true;
 }
 
 function getLocalStorage() {
@@ -65,10 +65,15 @@ function saveBook(book) {
   refreshPage();
 }
 
+function displayErrorMessage() {
+  document.querySelector('.error-message').innerHTML = 'input fields should not the empty';
+}
+
+
 function addBookToLibrary() {
   const [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue();
 
-  let validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+  const validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
   if (validateInput) {
     document.querySelector('.bg-modal').style.display = 'none';
     const newBook = new Book(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
@@ -82,7 +87,7 @@ function addBookToLibrary() {
 
 function updateBook(bookId) {
   const [titleVal, pageVal, authorVal, yearVal, genreVal, statusVal] = getInputValue();
-  let validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
+  const validateInput = validate(titleVal, pageVal, authorVal, yearVal, genreVal, statusVal);
 
   if (validateInput) {
     const ls = getLocalStorage();
@@ -124,10 +129,6 @@ function deleteBook(index) {
     document.querySelector(`.book-${bookId}`).style.display = 'none';
     deleteItem(bookId);
   });
-}
-
-function displayErrorMessage() {
-  document.querySelector('.error-message').innerHTML = 'input fields should not the empty'
 }
 
 document.addEventListener('DOMContentLoaded', () => {
