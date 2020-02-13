@@ -80,9 +80,8 @@ function addBookToLibrary() {
 
     saveBook(newBook);
   } else {
-    displayErrorMessage()
+    displayErrorMessage();
   }
-
 }
 
 function updateBook(bookId) {
@@ -102,9 +101,8 @@ function updateBook(bookId) {
     setLocalStorage(ls);
     refreshPage();
   } else {
-    displayErrorMessage()
+    displayErrorMessage();
   }
-
 }
 
 function deleteItem(bookId) {
