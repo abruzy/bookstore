@@ -150,6 +150,16 @@ and also iPads specifically.
     width: 100%;
   }
 
+  form {
+    overflow: auto;
+    max-height: 300px;
+    max-width: 300px;
+  }
+
+  .modal-content {
+    max-width: 270px;
+  }
+
   /* Force table to not be like tables anymore */
   table,
   thead,

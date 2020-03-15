@@ -1,4 +1,3 @@
-
 document.getElementById('button').addEventListener('click',
   () => {
     document.querySelector('.bg-modal').style.display = 'flex';

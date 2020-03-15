@@ -1,4 +1,3 @@
-
 const myLibrary = [];
 
 function Book(title, page, author, year, genre, status) {
